@@ -117,17 +117,25 @@ final h = toHijri(
 );
 ```
 
+## Architecture
+
+The UAQ engine performs a binary search over the 184-entry table — O(log 183) per conversion. The FCNA engine computes new moon times using the Meeus Ch. 49 algorithm. The registry pattern lets consumers add custom calendar engines at runtime.
+
 ## Compatibility
 
 - Dart SDK >= 3.7.0
 - Works with Flutter
 - Zero external dependencies
 
-## Related Packages
+## Related
 
 - [hijri-core](https://www.npmjs.com/package/hijri-core) (TypeScript/npm)
 - [nrel-spa](https://www.npmjs.com/package/nrel-spa) (Solar position algorithm)
 - [pray-calc](https://www.npmjs.com/package/pray-calc) (Islamic prayer times)
+
+## Acknowledgments
+
+The Umm al-Qura calendar table is derived from data published by the King Abdulaziz City for Science and Technology (KACST), Saudi Arabia. The FCNA new moon algorithm follows Jean Meeus, "Astronomical Algorithms," 2nd ed., Chapter 49.
 
 ## License
 
