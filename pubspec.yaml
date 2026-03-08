@@ -1,0 +1,20 @@
+name: hijri_core
+description: >
+  Hijri/Gregorian calendar conversion for Dart and Flutter. Pluggable engine
+  system with built-in Umm al-Qura and FCNA calendars. Zero dependencies.
+version: 1.0.0
+repository: https://github.com/acamarata/hijri-core-dart
+issue_tracker: https://github.com/acamarata/hijri-core-dart/issues
+topics:
+  - hijri
+  - islamic
+  - calendar
+  - gregorian
+  - umm-al-qura
+
+environment:
+  sdk: ^3.7.0
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.8
