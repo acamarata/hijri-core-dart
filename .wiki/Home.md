@@ -16,5 +16,5 @@ print(greg!.toIso8601String().substring(0, 10)); // 2025-03-01
 
 ## Pages
 
-- [API Reference](API-Reference) — Full function and type reference
-- [Calendar Systems](Calendar-Systems) — UAQ and FCNA algorithm details
+- [API Reference](API-Reference): Full function and type reference
+- [Calendar Systems](Calendar-Systems): UAQ and FCNA algorithm details

@@ -119,7 +119,7 @@ final h = toHijri(
 
 ## Architecture
 
-The UAQ engine performs a binary search over the 184-entry table — O(log 183) per conversion. The FCNA engine computes new moon times using the Meeus Ch. 49 algorithm. The registry pattern lets consumers add custom calendar engines at runtime.
+The UAQ engine performs a binary search over the 184-entry table: O(log 183) per conversion. The FCNA engine computes new moon times using the Meeus Ch. 49 algorithm. The registry pattern lets consumers add custom calendar engines at runtime.
 
 ## Compatibility
 
