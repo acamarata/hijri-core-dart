@@ -1,8 +1,13 @@
 # hijri_core
 
-Hijri/Gregorian calendar conversion for Dart and Flutter. Supports Umm al-Qura (UAQ) and FCNA/ISNA calendars. Zero dependencies.
+Hijri/Gregorian calendar conversion for Dart and Flutter. Pluggable engine system with built-in Umm al-Qura (UAQ) and FCNA calendar implementations. Zero dependencies.
 
-## Quick Start
+## Install
+
+```yaml
+dependencies:
+  hijri_core: ^1.0.0
+```
 
 ```dart
 import 'package:hijri_core/hijri_core.dart';
@@ -14,7 +19,10 @@ final greg = toGregorian(1446, 9, 1);
 print(greg!.toIso8601String().substring(0, 10)); // 2025-03-01
 ```
 
-## Pages
+## Contents
 
-- [API Reference](API-Reference): Full function and type reference
-- [Calendar Systems](Calendar-Systems): UAQ and FCNA algorithm details
+- [Quickstart Guide](guides/quickstart) — install, first call, engine selection
+- [Advanced Usage](guides/advanced) — pluggable engines, custom calendars
+- [API Reference](API-Reference) — full function and type reference
+- [Examples](examples/basic-usage) — real-world snippets
+- [Contributing](CONTRIBUTING)

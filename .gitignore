@@ -25,3 +25,6 @@ Thumbs.db
 .windsurf/
 .gemini/
 .codeium/
+
+# Secrets
+.env*
