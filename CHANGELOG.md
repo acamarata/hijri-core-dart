@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- `toHijri` now normalizes the input `DateTime` to its UTC calendar day before
+  lookup (via `date.toUtc()`), matching the UTC-midnight contract of `toGregorian`.
+  Previously, passing a local `DateTime` on a host west of UTC could return the
+  previous Hijri day, breaking `toHijri(toGregorian(y, m, d))` round-trips.
+  Applies to both the UAQ and FCNA engines.
+
 ## [1.0.0] - 2026-05-25
 
 ### Added

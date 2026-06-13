@@ -234,12 +234,15 @@ int _fcnaDaysInMonth(int hy, int hm) {
 // ---- FCNA Gregorian -> Hijri ----
 
 HijriDate? _fcnaToHijri(DateTime date) {
-  // FCNA criterion is UTC-based, so UTC date components ensure correct round-trips.
+  // Normalize to UTC calendar day so the result is deterministic regardless of
+  // the host timezone and whether the caller passes a UTC or local DateTime.
+  // This is symmetric with toGregorian, which always returns DateTime.utc().
+  final d = date.toUtc();
   final inputMs =
       DateTime.utc(
-        date.year,
-        date.month,
-        date.day,
+        d.year,
+        d.month,
+        d.day,
       ).millisecondsSinceEpoch.toDouble();
 
   final kApprox = _utcMsToKApprox(inputMs - 15 * msPerDay);

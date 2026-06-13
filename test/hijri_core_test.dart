@@ -93,6 +93,41 @@ void main() {
     });
   });
 
+  // ---- UAQ round-trips (UTC day boundary) ----
+
+  group('UAQ round-trips', () {
+    test('toHijri(toGregorian(1446,9,1)) == 1446/9/1', () {
+      final greg = toGregorian(1446, 9, 1);
+      expect(greg, isNotNull);
+      final h = toHijri(greg!);
+      expect(h, isNotNull);
+      expect(h!.hy, equals(1446));
+      expect(h.hm, equals(9));
+      expect(h.hd, equals(1));
+    });
+    test('local DateTime with same UTC day round-trips correctly', () {
+      // toGregorian returns DateTime.utc(); converting it to local must still
+      // produce the correct Hijri day (regression for UTC-west hosts).
+      final greg = toGregorian(1446, 9, 1);
+      expect(greg, isNotNull);
+      final localGreg = greg!.toLocal();
+      final h = toHijri(localGreg);
+      expect(h, isNotNull);
+      expect(h!.hy, equals(1446));
+      expect(h.hm, equals(9));
+      expect(h.hd, equals(1));
+    });
+    test('toHijri(toGregorian(1318,1,1)) == 1318/1/1 (table lower bound)', () {
+      final greg = toGregorian(1318, 1, 1);
+      expect(greg, isNotNull);
+      final h = toHijri(greg!);
+      expect(h, isNotNull);
+      expect(h!.hy, equals(1318));
+      expect(h.hm, equals(1));
+      expect(h.hd, equals(1));
+    });
+  });
+
   // ---- UAQ isValid ----
 
   group('UAQ isValid', () {

@@ -36,7 +36,11 @@ int _dateUtcMs(int year, int month, int day) {
 }
 
 HijriDate? _uaqToHijri(DateTime date) {
-  final inputUtc = _dateUtcMs(date.year, date.month, date.day);
+  // Normalize to UTC calendar day so the result is deterministic regardless of
+  // the host timezone and whether the caller passes a UTC or local DateTime.
+  // This is symmetric with toGregorian, which always returns DateTime.utc().
+  final d = date.toUtc();
+  final inputUtc = _dateUtcMs(d.year, d.month, d.day);
 
   // Binary search: find the last table entry whose Gregorian start date <= input.
   int lo = 0;
