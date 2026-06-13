@@ -239,11 +239,7 @@ HijriDate? _fcnaToHijri(DateTime date) {
   // This is symmetric with toGregorian, which always returns DateTime.utc().
   final d = date.toUtc();
   final inputMs =
-      DateTime.utc(
-        d.year,
-        d.month,
-        d.day,
-      ).millisecondsSinceEpoch.toDouble();
+      DateTime.utc(d.year, d.month, d.day).millisecondsSinceEpoch.toDouble();
 
   final kApprox = _utcMsToKApprox(inputMs - 15 * msPerDay);
   final k0 = kApprox.floor();
