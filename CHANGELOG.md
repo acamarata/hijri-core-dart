@@ -1,3 +1,15 @@
+## 1.1.0
+
+### Fixed
+- **The registry is now usable as the very first call into the package.** Registration of the built-in engines happened as a side effect of calling a conversion function, so a caller whose first action was `listCalendars()` received an empty list, and `getCalendar('uaq')` threw `Unknown Hijri calendar: "uaq". Available: .` — naming the very engine the package ships with as unavailable.
+
+  Registration now lives in the registry itself and runs on first access from `listCalendars`, `getCalendar` or `registerCalendar`. The JavaScript port registers at module load and never had this behaviour; the two now agree.
+
+### Added
+- **A cross-language parity suite.** `test/parity_test.dart` asserts 432 vectors against fixture output from the JavaScript `hijri-core` package: both calendars (uaq, fcna) across 1938-2076, every month of two full Hijri years, and the validity edge cases where an off-by-one first shows — day 30 of a 29-day month, month 13, day 0. Every one matches exactly, which is the expectation for integer-valued calendar arithmetic.
+
+  Building that suite is what surfaced the registry bug.
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
